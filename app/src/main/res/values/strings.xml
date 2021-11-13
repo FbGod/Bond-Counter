@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Bond Counter</string>
+    <string name="year_profit">Годовая доходность</string>
+    <string name="nkd">НКД</string>
+    <string name="commission">Комиссия за сделку</string>
+    <string name="commission_acc_mng">Комиссия за ведение счета</string>
+    <string name="date_repayment">Стартовая цена</string>
+    <string name="coupon_size">Размер купона</string>
+    <string name="buy_date">Дата покупки</string>
+    <string name="count">Рассчитать</string>
+</resources>
