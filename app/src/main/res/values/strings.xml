@@ -4,8 +4,10 @@
     <string name="nkd">НКД</string>
     <string name="commission">Комиссия за сделку</string>
     <string name="commission_acc_mng">Комиссия за ведение счета</string>
-    <string name="date_repayment">Стартовая цена</string>
+    <string name="date_repayment">Срок погашения</string>
     <string name="coupon_size">Размер купона</string>
-    <string name="buy_date">Дата покупки</string>
+    <string name="start_value">Стартовая цена</string>
     <string name="count">Рассчитать</string>
+    <string name="nominal">Номинал</string>
+    <string name="coupon_frequency">Частота выплаты купона (дни)</string>
 </resources>

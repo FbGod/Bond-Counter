@@ -12,26 +12,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     Calendar dateAndTime = Calendar.getInstance();
     long dateAndTime_b = 0;
     long dateAndTime_e = 0;
     DatePickerDialog.OnDateSetListener d;
-    double year_profit = 0;
-    double nkd = 0;
-    double commission = 0;
-    double commission_acc_mng = 0;
-    double date_repayment = 0;
-    double coupon_size = 0;
-    double buy_date = 0;
-    int i = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,24 +36,16 @@ public class MainActivity extends AppCompatActivity {
         EditText et_commission_acc_mng = findViewById(R.id.commission_acc_mng_text);
         EditText et_date_repayment = findViewById(R.id.date_repayment_text);
         EditText et_coupon_size = findViewById(R.id.coupon_size_text);
-        EditText et_buy_date = findViewById(R.id.buy_date_text);
+        EditText et_start_value = findViewById(R.id.start_value_text);
+        EditText et_nominal = findViewById(R.id.nominal_text);
+        EditText et_coupon_frequency = findViewById(R.id.coupon_frequency_text);
         Button count = findViewById(R.id.bt_count);
-        et_buy_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                i = 0;
-                new DatePickerDialog(MainActivity.this, d,
-                        dateAndTime.get(Calendar.YEAR),
-                        dateAndTime.get(Calendar.MONTH),
-                        dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
 
-            }
+        dateAndTime_b = Calendar.getInstance().getTimeInMillis();
 
-        });
         et_date_repayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 1;
                 new DatePickerDialog(MainActivity.this, d,
                         dateAndTime.get(Calendar.YEAR),
                         dateAndTime.get(Calendar.MONTH),
@@ -83,14 +69,9 @@ public class MainActivity extends AppCompatActivity {
                         dateAndTime.getTimeInMillis(),
                         DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR) + ", " + DateFormat.format("EEEE", dateAndTime))));
                 Toast.makeText(MainActivity.this, sd, Toast.LENGTH_LONG).show();
-                if (i == 0){
-                    dateAndTime_b = dateAndTime.getTimeInMillis();
-                    et_buy_date.setText(sd);
-                }
-                if (i == 1){
                     dateAndTime_e = dateAndTime.getTimeInMillis();
                     et_date_repayment.setText(sd);
-                }
+
             }
         };
         count.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +80,20 @@ public class MainActivity extends AppCompatActivity {
                 long milliseconds1 = dateAndTime_e;
                 long milliseconds2 = dateAndTime_b;
                 long delta = milliseconds1 - milliseconds2;
-                Toast.makeText(MainActivity.this, String.valueOf(milliseconds1) + "  " + String.valueOf(milliseconds2) + "  " + String.valueOf(delta), Toast.LENGTH_LONG).show();
+                int days = (int) (TimeUnit.MILLISECONDS.toDays(delta) + 1);
+                int kf = 1;
+//                long year_profit=Integer.parseInt(et_year_profit.getText().toString());
+                double start_value=Double.parseDouble(et_start_value.getText().toString());
+                double nkd=Double.parseDouble(et_nkd.getText().toString());
+                double commission=Double.parseDouble(et_commission.getText().toString());
+                double broker_commission=Double.parseDouble(et_commission_acc_mng.getText().toString());
+                double coupon_size=Double.parseDouble(et_coupon_size.getText().toString());
+                double nominal=Double.parseDouble(et_nominal.getText().toString());
+                double coupon_frequency=Double.parseDouble(et_coupon_frequency.getText().toString());
+                double buy = (kf * (start_value + nkd + (start_value + nkd) * commission) + broker_commission);
+                double sell = (nominal + coupon_size * days / coupon_frequency);
+
+                Toast.makeText(MainActivity.this, String.valueOf(sell - buy), Toast.LENGTH_LONG).show();
             }
 
         });
