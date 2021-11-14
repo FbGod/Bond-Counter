@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 long delta = milliseconds1 - milliseconds2;
                 Toast.makeText(MainActivity.this, String.valueOf(milliseconds1) + "  " + String.valueOf(milliseconds2) + "  " + String.valueOf(delta), Toast.LENGTH_LONG).show();
             }
-
+//
         });
 
 
