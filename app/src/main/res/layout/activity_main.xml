@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:id="@+id/ll1"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="15dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/start_value"
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:digits="0123456789."/>
+                android:digits=""/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -64,7 +64,7 @@
         android:orientation="horizontal"
         android:id="@+id/ll2"
         android:layout_below="@+id/ll1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -120,12 +120,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:id="@+id/ll3"
         android:layout_below="@+id/ll2">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/coupon_frequency"
+            android:id="@+id/coefficient"
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
@@ -135,15 +135,15 @@
             android:layout_marginStart="7dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="7dp"
-            android:hint="@string/coupon_frequency">
+            android:hint="@string/coefficient">
 
             <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/coupon_frequency_text"
+                android:id="@+id/coefficient_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:digits="0123456789."/>
+                android:digits="0123456789"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -173,46 +173,14 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/ll4"
-        android:layout_below="@+id/ll3">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/year_profit"
-            android:layout_below="@+id/coupon_size"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="7dp"
-            android:hint="@string/year_profit">
-
-            <!--this is the actual edit text which takes the input-->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/year_profit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:digits="0123456789."/>
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nominal"
-            android:layout_below="@+id/year_profit"
+            android:layout_below="@+id/ll3"
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
             android:layout_marginTop="12dp"
@@ -228,11 +196,31 @@
                 android:digits="0123456789."/>
 
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/coupon_frequency"
+    android:layout_below="@+id/nominal"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="7dp"
+        android:hint="@string/coupon_frequency">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/coupon_frequency_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:digits="0123456789."/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/commission_acc_mng"
-        android:layout_below="@+id/ll4"
+        android:layout_below="@+id/coupon_frequency"
 
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
@@ -263,7 +251,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
-        app:cornerRadius="25dp"
+        app:cornerRadius="40dp"
         android:text="@string/count" />
 
 </RelativeLayout>
